@@ -11,6 +11,8 @@ call plug#end()
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled=0
 
@@ -21,6 +23,9 @@ inoremap <leader>gi <Esc>:GoImport <C-R><C-W><cr>A.
 
 let g:lightline = {
       \ 'colorscheme': 'monokai_pro',
+      \ 'active': {
+      \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ]
+      \ }
       \ }
 
 map <C-t> :NERDTreeToggle<CR>
@@ -198,5 +203,5 @@ set nu rnu
 set incsearch
 set ruler
 
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=0

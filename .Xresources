@@ -1,6 +1,6 @@
 ! Use a nice truetype font and size by default... 
-xterm*font: : -xos4-terminus-medium-r-*--16-*-*-*-*-*-iso10646-*
-xterm*faceSize: 12
+! apt-get install xfonts-terminus
+xterm*font: -xos4-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true

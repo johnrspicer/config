@@ -202,7 +202,6 @@ set ai
 set nu rnu
 set incsearch
 set ruler
-set guicursor=
 
 set colorcolumn=120
 highlight ColorColumn ctermbg=0

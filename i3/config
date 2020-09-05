@@ -8,6 +8,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+for_window [class="mupen64plus"] floating enabled
 
 set $mod Mod4
 
@@ -166,7 +167,7 @@ bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
-exec compton
+exec--no-startup-id compton --config ~/.config/compton.conf -b
 exec_always pactl set-card-profile 0 output:hdmi-stereo-extra1
 exec_always feh --bg-scale /home/jrspicer/Pictures/vOrD96J.png
 

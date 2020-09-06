@@ -167,9 +167,9 @@ bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
-exec--no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec_always --no-startup-id feh --bg-scale /home/jrspicer/Pictures/vOrD96J.png
 exec_always pactl set-card-profile 0 output:hdmi-stereo-extra1
-exec_always feh --bg-scale /home/jrspicer/Pictures/vOrD96J.png
 
 # set display config for desktop (triple monitor)
 exec_always xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DP-2 --mode 1920x1080 --pos 5760x648 --rotate normal --output DP-1 --off --output DP-0 --mode 1920x1080 --pos 0x648 --rotate normal

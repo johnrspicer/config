@@ -1,5 +1,5 @@
 # generic applications
-sudo apt install neovim compton xrandr xbacklight ranger caca-utils highlight atool w3m poppler-utils mediainfo
+sudo apt install neovim compton xrandr xbacklight ranger caca-utils highlight atool w3m poppler-utils mediainfo xfonts-terminus
 
 # special cases for laptop
 ## check for intel_backlight

@@ -42,6 +42,9 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
+" Remove swap files
+set noswapfile
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -187,7 +190,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 syntax on
-set termguicolors
 color monokai_pro
 set encoding=UTF-8
 set noerrorbells

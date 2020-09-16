@@ -63,8 +63,8 @@
 
 ! cursor size
 Xcursor.size: 2
-!URxvt.perl-lib: $HOME/.urxvt/ext/
-!URxvt.perl-ext-common: ...,font-size
+URxvt*perl-lib: $HOME/.urxvt/ext/
+URxvt*perl-ext-common: default,font-size
 URxvt*font: -xos4-terminus-medium-r-*-*-18-*-*-*-*-*-iso10646-*
 URxvt*iso14755: false
 URxvt*scrollBar: false

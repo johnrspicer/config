@@ -31,6 +31,9 @@ font -xos4-terminus-medium-r-*-*-18-*-*-*-*-*-iso10646-*
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# select a area to screenshot and copy to clipboard
+bindsym $mod+Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -160,7 +163,7 @@ bar {
             background #00000000
         }
         position top
-        mode hide
+        output primary
         workspace_buttons yes
 }
 
@@ -176,10 +179,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
 exec --no-startup-id redshift
+exec --no-startup-id dropbox start
+exec_always xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DP-2 --mode 1920x1080 --pos 5760x648 --rotate normal --output DP-1 --off --output DP-0 --mode 1920x1080 --pos 0x648 --rotate normal
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec killall pulseaudio
 exec_always pactl set-card-profile 0 output:hdmi-stereo-extra1
-exec_always xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DP-2 --mode 1920x1080 --pos 5760x648 --rotate normal --output DP-1 --off --output DP-0 --mode 1920x1080 --pos 0x648 --rotate normal
 exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/vOrD96J.png"
 
 # set display config for desktop (triple monitor)

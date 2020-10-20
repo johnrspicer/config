@@ -15,7 +15,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 6
+font -xos4-terminus-medium-r-*-*-18-*-*-*-*-*-iso10646-*
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,6 +31,9 @@ font pango:monospace 6
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# select a area to screenshot and copy to clipboard
+bindsym $mod+Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -38,7 +41,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 5 -width 25
+bindsym $mod+d exec rofi -show run -display-run "" -lines 5 -width 25
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -57,10 +60,11 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+set $mspeed 25
+bindsym $mod+Shift+j move left $mspeed
+bindsym $mod+Shift+k move down $mspeed 
+bindsym $mod+Shift+l move up $mspeed
+bindsym $mod+Shift+semicolon move right $mspeed
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -133,10 +137,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width $mspeed px or $mspeed ppt
+        bindsym k resize grow height $mspeed px or $mspeed ppt
+        bindsym l resize shrink height $mspeed px or $mspeed ppt
+        bindsym semicolon resize grow width $mspeed px or $mspeed ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -155,10 +159,12 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+            background #00000000
+        }
         position top
-        mode hide
+        output primary
         workspace_buttons yes
-        tray_output none
 }
 
 hide_edge_borders both
@@ -172,9 +178,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
-exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id redshift
+exec --no-startup-id dropbox start
 exec_always xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DP-2 --mode 1920x1080 --pos 5760x648 --rotate normal --output DP-1 --off --output DP-0 --mode 1920x1080 --pos 0x648 --rotate normal
-exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/vOrD96J.png"
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec killall pulseaudio
 exec_always pactl set-card-profile 0 output:hdmi-stereo-extra1
+exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/vOrD96J.png"
 
 # set display config for desktop (triple monitor)

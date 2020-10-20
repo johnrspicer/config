@@ -1,38 +1,70 @@
-! ! █▓▒░ scorcerer colors
-*.foreground:   #c2c2b0
-*.background:   #222222
-*.cursorColor:  #c2c2b0
+! gruvbit colors
+! hard contrast: *background: #1d2021
+*.background: #1c1c1c
+! soft contrast: *background: #32302f
+*.foreground: #ebdbb2
+! Black + DarkGrey
+*.color0:  #282828
+*.color8:  #928374
+! DarkRed + Red
+*.color1:  #cc241d
+*.color9:  #fb4934
+! DarkGreen + Green
+*.color2:  #98971a
+*.color10: #b8bb26
+! DarkYellow + Yellow
+*.color3:  #d79921
+*.color11: #fabd2f
+! DarkBlue + Blue
+*.color4:  #458588
+*.color12: #83a598
+! DarkMagenta + Magenta
+*.color5:  #b16286
+*.color13: #d3869b
+! DarkCyan + Cyan
+*.color6:  #689d6a
+*.color14: #8ec07c
+! LightGrey + White
+*.color7:  #a89984
+*.color15: #ebdbb2
+
+! █▓▒░ scorcerer colors
+!*.foreground:   #c2c2b0
+!*.background:   #222222
+!*.cursorColor:  #c2c2b0
 ! black
-*.color0:       #111111
-*.color8:       #181818
+!*.color0:       #111111
+!*.color8:       #181818
 ! red
-*.color1:       #aa4450
-*.color9:       #ff6a6a
+!*.color1:       #aa4450
+!*.color9:       #ff6a6a
 ! green
-*.color2:       #719611
-*.color10:      #b1d631
+!*.color2:       #719611
+!*.color10:      #b1d631
 ! yellow
-*.color3:       #ff9800
-*.color11:      #87875f
+!*.color3:       #ff9800
+!*.color11:      #87875f
 ! blue
-*.color4:       #6688aa
-*.color12:      #90b0d1
+!*.color4:       #6688aa
+!*.color12:      #90b0d1
 ! magenta
-*.color5:       #8f6f8f
-*.color13:      #8181a6
+!*.color5:       #8f6f8f
+!*.color13:      #8181a6
 ! cyan
-*.color6:       #528b8b
-*.color14:      #87ceeb
+!*.color6:       #528b8b
+!*.color14:      #87ceeb
 ! white
-*.color7:       #d3d3d3
-*.color15:      #c1cdc1
+!*.color7:       #d3d3d3
+!*.color15:      #c1cdc1
 ! stylized
-*.colorIT:      #719611
-*.colorBD:      #d3d3d3
-*.colorUL:      #528b8b
+!*.colorIT:      #719611
+!*.colorBD:      #d3d3d3
+!*.colorUL:      #528b8b
 
 ! cursor size
 Xcursor.size: 2
+URxvt*perl-lib: $HOME/.urxvt/ext/
+URxvt*perl-ext-common: default,font-size
 URxvt*font: -xos4-terminus-medium-r-*-*-18-*-*-*-*-*-iso10646-*
 URxvt*iso14755: false
 URxvt*scrollBar: false

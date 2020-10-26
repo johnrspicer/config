@@ -1,6 +1,6 @@
 # generic applications
-sudo apt install neovim compton xrandr xbacklight ranger caca-utils highlight atool w3m poppler-utils mediainfo xfonts-terminus maim
-
+sudo apt install neovim compton xrandr xbacklight ranger caca-utils highlight atool w3m poppler-utils mediainfo xclip xfonts-terminus maim
+>>>>>>> 972672fd50a9f052317a30ff72f735772ee0fb15
 # special cases for laptop
 ## check for intel_backlight
 sudo find /sys/ -type f -iname '*brightness*'

@@ -1,5 +1,6 @@
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'habamax/vim-gruvbit'
 Plug 'itchyny/lightline.vim'
 Plug 'jbmorgado/vim-pine-script'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -30,12 +31,12 @@ let g:fzf_preview_window = 'right:60%'
 nnoremap <leader>gi :GoImport <C-R><C-W><cr>
 inoremap <leader>gi <Esc>:GoImport <C-R><C-W><cr>A.
 
-let g:lightline = {
-      \ 'colorscheme': 'monokai_pro',
-      \ 'active': {
-      \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ]
-      \ }
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'monokai_pro',
+"      \ 'active': {
+"      \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ]
+"      \ }
+"      \ }
 
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
@@ -190,7 +191,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 syntax on
-color monokai_pro
+color gruvbit
 set encoding=UTF-8
 set noerrorbells
 set showmatch
@@ -199,6 +200,7 @@ set smartcase
 set ignorecase
 set noshowmode
 set noshowcmd
+set mouse=a
 set laststatus=2
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -208,5 +210,5 @@ set nu rnu
 set incsearch
 set ruler
 
-set colorcolumn=120
+set colorcolumn=80
 highlight ColorColumn ctermbg=0

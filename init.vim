@@ -31,6 +31,8 @@ let g:fzf_preview_window = 'right:60%'
 nnoremap <leader>gi :GoImport <C-R><C-W><cr>
 inoremap <leader>gi <Esc>:GoImport <C-R><C-W><cr>A.
 
+inoremap <silent><expr> <c-space> coc#refresh()
+
 "let g:lightline = {
 "      \ 'colorscheme': 'monokai_pro',
 "      \ 'active': {
@@ -212,3 +214,4 @@ set ruler
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0
+

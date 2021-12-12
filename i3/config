@@ -9,7 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 for_window [class="mupen64plus"] floating enabled
+for_window [class="mpv"] floating enabled
+for_window [class="feh"] floating enabled
 for_window [class="^.*"] border pixel 0
+new_window none
 
 set $mod Mod4
 
@@ -48,10 +51,10 @@ bindsym $mod+d exec rofi -show run -display-run "" -lines 5 -width 25
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -61,10 +64,10 @@ bindsym $mod+Right focus right
 
 # move focused window
 set $mspeed 25
-bindsym $mod+Shift+j move left $mspeed
-bindsym $mod+Shift+k move down $mspeed 
-bindsym $mod+Shift+l move up $mspeed
-bindsym $mod+Shift+semicolon move right $mspeed
+bindsym $mod+Shift+h move left $mspeed
+bindsym $mod+Shift+j move down $mspeed 
+bindsym $mod+Shift+k move up $mspeed
+bindsym $mod+Shift+l move right $mspeed
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -73,7 +76,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+x split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -137,10 +140,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width $mspeed px or $mspeed ppt
-        bindsym k resize grow height $mspeed px or $mspeed ppt
-        bindsym l resize shrink height $mspeed px or $mspeed ppt
-        bindsym semicolon resize grow width $mspeed px or $mspeed ppt
+        bindsym h resize shrink width $mspeed px or $mspeed ppt
+        bindsym j resize grow height $mspeed px or $mspeed ppt
+        bindsym k resize shrink height $mspeed px or $mspeed ppt
+        bindsym l resize grow width $mspeed px or $mspeed ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -160,7 +163,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         colors {
-            background #00000000
+            background #000000
         }
         position top
         output primary
@@ -174,16 +177,36 @@ hide_edge_borders both
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ unmute
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- unmute
+#bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 
+# display settings
+exec_always --no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --pos 5760x540 --rotate normal --output DP-1 --off --output DP-2 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DP-3 --off --output DP-4 --mode 1920x1080 --pos 0x540 --rotate normal --output DP-5 --off
+
+## old settings
+#workspace 1 output "DP-0"
+#workspace 2 output "DP-4"
+#workspace 3 output "DP-2"
+
+workspace 1 output "DP-4"
+workspace 2 output "DP-2"
+workspace 3 output "DP-0"
+
+# startup applications
 exec --no-startup-id redshift
-exec --no-startup-id dropbox start
-exec_always xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 3840x2160 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DP-2 --mode 1920x1080 --pos 5760x648 --rotate normal --output DP-1 --off --output DP-0 --mode 1920x1080 --pos 0x648 --rotate normal
-exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec killall pulseaudio
-exec_always pactl set-card-profile 0 output:hdmi-stereo-extra1
-exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/vOrD96J.png"
+exec --no-startup-id nitrogen --restore
 
-# set display config for desktop (triple monitor)
+# compsite manager 
+exec_always --no-startup-id compton --config ~/.config/compton.conf -b
+
+# default audio settings
+exec_always killall pulseaudio
+exec_always pactl set-card-profile 0 output:hdmi-stereo-extra2
+
+# x server settings
+# turns off screen timeout
+exec_always --no-startup-id xset s off && xset -dpms && xset s noblank
+#
+# sets Xresources
+exec_always --no-startup-id xrdb ~/.Xresources

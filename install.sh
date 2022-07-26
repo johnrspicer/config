@@ -1,3 +1,4 @@
+
 # generic applications
 sudo apt install neovim compton xrandr xbacklight ranger caca-utils highlight atool w3m poppler-utils mediainfo xclip xfonts-terminus maim rxvt-unicode i3 pavucontrol rofi zsh
 sudo snap install spotify
@@ -8,6 +9,13 @@ chsh -s $(which zsh)
 # install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# install antigen
+curl -L git.io/antigen-nightly > antigen.zsh
+
+# install nvim Plug manager
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # install autosuggestions zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
@@ -16,10 +24,6 @@ https://github.com/majutsushi/urxvt-font-size
 
 # tmux plug manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-#neovim Plug manager
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # special cases for laptop
 ## check for intel_backlight

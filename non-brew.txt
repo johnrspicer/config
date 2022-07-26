@@ -1,4 +1,0 @@
-SizeUp
-BigDayCountdown
-Office 365
-terminal nord

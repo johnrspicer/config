@@ -1,39 +1,52 @@
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'habamax/vim-gruvbit'
+Plug 'itchyny/lightline.vim'
 Plug 'jbmorgado/vim-pine-script'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 call plug#end()
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled=0
 
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+nnoremap <c-p> :GFiles<cr>
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = ''
+
+" Always enable preview window on the right with 60% width
+let g:fzf_preview_window = 'right:60%'
 
 nnoremap <leader>gi :GoImport <C-R><C-W><cr>
 inoremap <leader>gi <Esc>:GoImport <C-R><C-W><cr>A.
 
-let g:lightline = {
-      \ 'colorscheme': 'monokai_pro',
-      \ 'active': {
-      \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ]
-      \ }
-      \ }
+inoremap <silent><expr> <c-space> coc#refresh()
 
-map <C-t> :NERDTreeToggle<CR>
+"let g:lightline = {
+"      \ 'colorscheme': 'monokai_pro',
+"      \ 'active': {
+"      \ 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ]
+"      \ }
+"      \ }
 
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+" Remove swap files
+set noswapfile
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -160,12 +173,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
+"
 " Mappings using CoCList:
 " Show all diagnostics.
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -185,8 +193,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 syntax on
-set termguicolors
-color monokai_pro
+color gruvbit
 set encoding=UTF-8
 set noerrorbells
 set showmatch
@@ -194,6 +201,8 @@ set showcmd
 set smartcase
 set ignorecase
 set noshowmode
+set noshowcmd
+set mouse=a
 set laststatus=2
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -203,5 +212,6 @@ set nu rnu
 set incsearch
 set ruler
 
-set colorcolumn=120
+set colorcolumn=80
 highlight ColorColumn ctermbg=0
+

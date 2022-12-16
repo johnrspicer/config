@@ -18,6 +18,7 @@ call plug#end()
 autocmd StdinReadPre * let s:std_in=1
 
 nnoremap <c-p> :GFiles<cr>
+nnoremap <c-o> :Rg<cr>
 " Empty value to disable preview window altogether
 let g:fzf_preview_window = ''
 
@@ -265,6 +266,6 @@ set nu rnu
 set incsearch
 set ruler
 
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=0
 

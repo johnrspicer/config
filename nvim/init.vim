@@ -22,6 +22,7 @@ let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled=0
 
 nnoremap <c-p> :GFiles<cr>
+nnoremap <c-o> :Rg<cr>
 " Empty value to disable preview window altogether
 let g:fzf_preview_window = ''
 
@@ -217,6 +218,6 @@ set nu rnu
 set incsearch
 set ruler
 
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=0
 

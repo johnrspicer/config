@@ -1,6 +1,5 @@
-
 # generic applications
-sudo apt install neovim zsh
+sudo apt install neovim zsh ripgrep
 
 # default shell zsh
 chsh -s $(which zsh)

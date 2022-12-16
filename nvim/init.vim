@@ -1,6 +1,6 @@
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'habamax/vim-gruvbit'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'jbmorgado/vim-pine-script'
 Plug 'phanviet/vim-monokai-pro'
@@ -247,7 +247,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 syntax on
-color gruvbit
+colorscheme gruvbox
+set background=dark
 set encoding=UTF-8
 set noerrorbells
 set showmatch
